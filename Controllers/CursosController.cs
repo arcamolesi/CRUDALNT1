@@ -10,23 +10,22 @@ using CRUDALNT1.Models;
 
 namespace CRUDALNT1.Controllers
 {
-    public class AlunosController : Controller
+    public class CursosController : Controller
     {
         private readonly AppDbContext _context;
 
-        public AlunosController(AppDbContext context)
+        public CursosController(AppDbContext context)
         {
             _context = context;
         }
 
-        // GET: Alunos
+        // GET: Cursos
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.Alunos.Include(a => a.curso);
-            return View(await appDbContext.ToListAsync());
+            return View(await _context.Cursos.ToListAsync());
         }
 
-        // GET: Alunos/Details/5
+        // GET: Cursos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,42 +33,39 @@ namespace CRUDALNT1.Controllers
                 return NotFound();
             }
 
-            var aluno = await _context.Alunos
-                .Include(a => a.curso)
+            var curso = await _context.Cursos
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (aluno == null)
+            if (curso == null)
             {
                 return NotFound();
             }
 
-            return View(aluno);
+            return View(curso);
         }
 
-        // GET: Alunos/Create
+        // GET: Cursos/Create
         public IActionResult Create()
         {
-            ViewData["cursoid"] = new SelectList(_context.Cursos, "id", "descricao");
             return View();
         }
 
-        // POST: Alunos/Create
+        // POST: Cursos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,nome,idade,cursoid,nota")] Aluno aluno)
+        public async Task<IActionResult> Create([Bind("id,descricao,area,sigla")] Curso curso)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(aluno);
+                _context.Add(curso);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["cursoid"] = new SelectList(_context.Cursos, "id", "area", aluno.cursoid);
-            return View(aluno);
+            return View(curso);
         }
 
-        // GET: Alunos/Edit/5
+        // GET: Cursos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -77,23 +73,22 @@ namespace CRUDALNT1.Controllers
                 return NotFound();
             }
 
-            var aluno = await _context.Alunos.FindAsync(id);
-            if (aluno == null)
+            var curso = await _context.Cursos.FindAsync(id);
+            if (curso == null)
             {
                 return NotFound();
             }
-            ViewData["cursoid"] = new SelectList(_context.Cursos, "id", "area", aluno.cursoid);
-            return View(aluno);
+            return View(curso);
         }
 
-        // POST: Alunos/Edit/5
+        // POST: Cursos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,nome,idade,cursoid,nota")] Aluno aluno)
+        public async Task<IActionResult> Edit(int id, [Bind("id,descricao,area,sigla")] Curso curso)
         {
-            if (id != aluno.id)
+            if (id != curso.id)
             {
                 return NotFound();
             }
@@ -102,12 +97,12 @@ namespace CRUDALNT1.Controllers
             {
                 try
                 {
-                    _context.Update(aluno);
+                    _context.Update(curso);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AlunoExists(aluno.id))
+                    if (!CursoExists(curso.id))
                     {
                         return NotFound();
                     }
@@ -118,11 +113,10 @@ namespace CRUDALNT1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["cursoid"] = new SelectList(_context.Cursos, "id", "area", aluno.cursoid);
-            return View(aluno);
+            return View(curso);
         }
 
-        // GET: Alunos/Delete/5
+        // GET: Cursos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -130,35 +124,34 @@ namespace CRUDALNT1.Controllers
                 return NotFound();
             }
 
-            var aluno = await _context.Alunos
-                .Include(a => a.curso)
+            var curso = await _context.Cursos
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (aluno == null)
+            if (curso == null)
             {
                 return NotFound();
             }
 
-            return View(aluno);
+            return View(curso);
         }
 
-        // POST: Alunos/Delete/5
+        // POST: Cursos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var aluno = await _context.Alunos.FindAsync(id);
-            if (aluno != null)
+            var curso = await _context.Cursos.FindAsync(id);
+            if (curso != null)
             {
-                _context.Alunos.Remove(aluno);
+                _context.Cursos.Remove(curso);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AlunoExists(int id)
+        private bool CursoExists(int id)
         {
-            return _context.Alunos.Any(e => e.id == id);
+            return _context.Cursos.Any(e => e.id == id);
         }
     }
 }

@@ -1,4 +1,4 @@
-@model IEnumerable<CRUDALNT1.Models.Aluno>
+@model IEnumerable<CRUDALNT1.Models.Curso>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,16 +13,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.nome)
+                @Html.DisplayNameFor(model => model.descricao)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.idade)
+                @Html.DisplayNameFor(model => model.area)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.curso)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.nota)
+                @Html.DisplayNameFor(model => model.sigla)
             </th>
             <th></th>
         </tr>
@@ -31,16 +28,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.nome)
+                @Html.DisplayFor(modelItem => item.descricao)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.idade)
+                @Html.DisplayFor(modelItem => item.area)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.curso.descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nota)
+                @Html.DisplayFor(modelItem => item.sigla)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |

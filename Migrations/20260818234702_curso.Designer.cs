@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRUDALNT1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260812004557_AtNomeAlunos")]
-    partial class AtNomeAlunos
+    [Migration("20260818234702_curso")]
+    partial class curso
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,13 +33,17 @@ namespace CRUDALNT1.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<string>("curso")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<int>("idade")
                         .HasColumnType("int");
 
                     b.Property<string>("nome")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(35)
+                        .HasColumnType("nvarchar(35)");
 
                     b.Property<float>("nota")
                         .HasColumnType("real");
@@ -47,6 +51,34 @@ namespace CRUDALNT1.Migrations
                     b.HasKey("id");
 
                     b.ToTable("aluno");
+                });
+
+            modelBuilder.Entity("CRUDALNT1.Models.Curso", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("area")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("descricao")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("sigla")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("curso");
                 });
 #pragma warning restore 612, 618
         }

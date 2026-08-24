@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRUDALNT1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260812014005_Curso")]
-    partial class Curso
+    [Migration("20260819000724_curso_aluno")]
+    partial class curso_aluno
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,10 +32,8 @@ namespace CRUDALNT1.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
-                    b.Property<string>("curso")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<int>("cursoid")
+                        .HasColumnType("int");
 
                     b.Property<int>("idade")
                         .HasColumnType("int");
@@ -49,6 +47,8 @@ namespace CRUDALNT1.Migrations
                         .HasColumnType("real");
 
                     b.HasKey("id");
+
+                    b.HasIndex("cursoid");
 
                     b.ToTable("aluno");
                 });
@@ -79,6 +79,17 @@ namespace CRUDALNT1.Migrations
                     b.HasKey("id");
 
                     b.ToTable("curso");
+                });
+
+            modelBuilder.Entity("CRUDALNT1.Models.Aluno", b =>
+                {
+                    b.HasOne("CRUDALNT1.Models.Curso", "curso")
+                        .WithMany()
+                        .HasForeignKey("cursoid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("curso");
                 });
 #pragma warning restore 612, 618
         }

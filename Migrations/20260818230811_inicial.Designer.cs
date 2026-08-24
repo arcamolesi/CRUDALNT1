@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRUDALNT1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260817014304_AlunosCor")]
-    partial class AlunosCor
+    [Migration("20260818230811_inicial")]
+    partial class inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

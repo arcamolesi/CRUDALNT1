@@ -23,9 +23,8 @@
                 <span asp-validation-for="idade" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="curso" class="control-label"></label>
-                <input asp-for="curso" class="form-control" />
-                <span asp-validation-for="curso" class="text-danger"></span>
+                <label asp-for="cursoid" class="control-label"></label>
+                <select asp-for="cursoid" class ="form-control" asp-items="ViewBag.cursoid"></select>
             </div>
             <div class="form-group">
                 <label asp-for="nota" class="control-label"></label>

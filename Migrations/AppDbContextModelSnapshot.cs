@@ -29,10 +29,8 @@ namespace CRUDALNT1.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
-                    b.Property<string>("curso")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<int>("cursoid")
+                        .HasColumnType("int");
 
                     b.Property<int>("idade")
                         .HasColumnType("int");
@@ -47,7 +45,48 @@ namespace CRUDALNT1.Migrations
 
                     b.HasKey("id");
 
+                    b.HasIndex("cursoid");
+
                     b.ToTable("aluno");
+                });
+
+            modelBuilder.Entity("CRUDALNT1.Models.Curso", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("area")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("descricao")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("sigla")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("curso");
+                });
+
+            modelBuilder.Entity("CRUDALNT1.Models.Aluno", b =>
+                {
+                    b.HasOne("CRUDALNT1.Models.Curso", "curso")
+                        .WithMany()
+                        .HasForeignKey("cursoid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("curso");
                 });
 #pragma warning restore 612, 618
         }
