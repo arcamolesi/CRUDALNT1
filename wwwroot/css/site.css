@@ -29,3 +29,71 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+header .navbar {
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+}
+
+header .navbar-brand {
+    font-size: 1.25rem;
+    letter-spacing: 0.5px;
+}
+
+header .nav-link {
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+header .nav-link:hover {
+    color: var(--cor-destaque) !important;
+}
+
+body {
+    background-color:  #a7a79d;
+    color: var(--cor-texto);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+main {
+    background-color: #ece97b;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.table thead {
+    background-color: var(--cor-primaria) !important;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #eff6ff;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+    padding: 0.75rem;
+}
+
+.form-control:focus {
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+}
+
+.form-label {
+    color: var(--cor-texto);
+}
+
+.card {
+    border: none;
+    border-radius: 0.75rem;
+}
+
+footer {
+    border-top: 4px solid var(--cor-destaque);
+}
+
+footer span {
+    letter-spacing: 0.3px;
+}

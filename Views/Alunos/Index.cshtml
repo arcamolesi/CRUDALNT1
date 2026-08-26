@@ -4,10 +4,11 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+    <h2 class="fw-bold text-primary mb-0">Lista de Alunos</h2>
+
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Adicionar Novo  <i class="bi bi-plus"></i></a>
 </p>
 <table class="table">
     <thead>
@@ -20,6 +21,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.curso)
+            </th>
+            <th>
+                Sigla
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.nota)
@@ -40,13 +44,35 @@
                 @Html.DisplayFor(modelItem => item.curso.descricao)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.nota)
+                @Html.DisplayFor(modelItem => item.curso.sigla)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.nota)
+            </td>
+@*             <td>
                 <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
-            </td>
+            </td> *@
+
+<td class="text-center" style="width: 160px;">
+    <a href="@Url.Action("Edit", "Alunos", new { id = item.id })"
+       class="btn btn-sm btn-outline-primary me-1"
+       title="Editar">
+        <i class="bi bi-pencil-fill"></i>
+    </a>
+    <a href="@Url.Action("Details", "Alunos", new { id = item.id })"
+       class="btn btn-sm btn-outline-info me-1"
+       title="Detalhes">
+        <i class="bi bi-eye-fill"></i>
+    </a>
+    <a href="@Url.Action("Delete", "Alunos", new { id = item.id })"
+       class="btn btn-sm btn-outline-danger"
+       title="Excluir">
+        <i class="bi bi-trash-fill"></i>
+    </a>
+</td>
+
         </tr>
 }
     </tbody>

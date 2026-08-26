@@ -8,44 +8,83 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CRUDALNT1.styles.css" asp-append-version="true" />
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <style>
+
+    @* configurações de cores no projeto     *@
+    :root {
+        --cor-primaria: #2563eb;
+        --cor-secundaria: #1e40af;
+        --cor-destaque: #f59e0b;
+        --cor-fundo: #559fe8;
+        --cor-texto: #1e293b;
+        --cor-header: #1e3a5f;
+        --cor-footer: #0f172a;
+    }
+</style>
+
+
 </head>
 <body>
+
+    @* cabeçalho da página *@
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CRUDALNT1</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-
-                       <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Alunos" asp-action="Index">Alunos</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm"
+         style="background-color: var(--cor-header);">
         <div class="container">
-            &copy; 2026 - CRUDALNT1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2"
+               href="@Url.Action("Index", "Home")">
+                <span class="badge bg-warning text-dark fs-6">📚</span>
+                Gerenciador de Escolas
+            </a>
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="@Url.Action("Index", "Alunos")">
+                            Alunos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="@Url.Action("Index", "Cursos")">
+                            Cursos
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </footer>
+    </nav>
+</header>
+
+
+    @* body - corpo da página *@
+    <main role="main" class="container py-4" style="min-height: 70vh;"
+        @RenderBody()
+    </main>
+
+
+
+    @* rodapé da página *@
+<footer class="mt-auto py-3"
+        style="background-color: var(--cor-footer);">
+    <div class="container text-center">
+        <span class="text-white-50 small">
+            &copy; @DateTime.Now.Year — Sistema de Gerenciamento de Alunos
+        </span>
+        <br />
+        <span class="text-white-50 small">
+            Desenvolvido com ASP.NET Core MVC + Bootstrap
+        </span>
+    </div>
+</footer>
+
+
+    @* configuração de javascript *@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
