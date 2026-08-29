@@ -5,11 +5,9 @@
 }
 
     <h2 class="fw-bold text-primary mb-0">Remover Aluno</h2>
-
-
-
-<div>
     <hr />
+<div>
+    
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.nome)
@@ -39,7 +37,11 @@
     <h4>Você deseja remover o aluno?</h4>
     <form asp-action="Delete">
         <input type="hidden" asp-for="id" />
-        <input type="submit" value="Remover" class="btn btn-danger" /> |
-         <a asp-action="Index"> <i class="bi bi-arrow-left"></i> - Voltar</a>
+        <button type="submit"  class="btn btn-danger" >
+            <i class="bi bi-trash-fill"></i> Remover
+        </button>
+        <button type="button" class="btn btn-secondary" onclick="window.location.href='@Url.Action("Index")'">
+                    <i class="bi bi-arrow-left"></i> Voltar
+         </button>
     </form>
 </div>

@@ -38,6 +38,10 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.id"> <i class="bi bi-pencil-fill"></i> - Editar</a> |
-    <a asp-action="Index"> <i class="bi bi-arrow-left"></i> - Voltar</a>
+    <button type="button" class="btn btn-warning" onclick="window.location.href='@Url.Action("Edit", new { id = Model?.id })'">
+            <i class="bi bi-pencil-fill"></i> Editar
+    </button>
+    <button type="button" class="btn btn-secondary" onclick="window.location.href='@Url.Action("Index")'">
+                    <i class="bi bi-arrow-left"></i> Voltar
+     </button>
 </div>

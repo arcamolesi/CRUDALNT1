@@ -5,11 +5,8 @@
 }
 
     <h2 class="fw-bold text-primary mb-0">Lista de Alunos</h2>
+    <hr />
 
-
-<p>
-    <a asp-action="Create">Adicionar Novo  <i class="bi bi-plus"></i></a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -28,7 +25,14 @@
             <th>
                 @Html.DisplayNameFor(model => model.nota)
             </th>
-            <th></th>
+            <th>
+            <a href="@Url.Action("Create")"
+       class="btn btn-sm btn-outline-success"
+       title="Novo">
+        Operações <i class="bi bi-plus"></i>
+    </a>
+            
+            </th>
         </tr>
     </thead>
     <tbody>

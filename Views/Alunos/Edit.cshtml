@@ -5,9 +5,7 @@
 }
 
     <h2 class="fw-bold text-primary mb-0">Editar Aluno</h2>
-
-
-<hr />
+    <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
@@ -36,14 +34,15 @@
             <br>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">  <i class="bi bi-save"></i> Salvar</button>
+                <button type="button" class="btn btn-secondary" onclick="window.location.href='@Url.Action("Index")'">
+                    <i class="bi bi-arrow-left"></i> Voltar
+                </button>
             </div>
+
         </form>
     </div>
 </div>
 <br>
-<div>
-    <a asp-action="Index"> <i class="bi bi-arrow-left"></i> - Voltar</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
