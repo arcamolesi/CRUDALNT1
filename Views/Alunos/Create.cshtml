@@ -4,8 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
+
    <h2 class="fw-bold text-primary mb-0">Inserir Alunos</h2>
-    <hr />
+    <hr >
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -29,7 +30,6 @@
                 <input asp-for="nota" class="form-control" />
                 <span asp-validation-for="nota" class="text-danger"></span>
             </div>
-            <br/>  
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
                 <button type="button" class="btn btn-secondary" onclick="window.location.href='@Url.Action("Index")'">
@@ -40,7 +40,6 @@
     </div>
 </div>
 
-<br/>   
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

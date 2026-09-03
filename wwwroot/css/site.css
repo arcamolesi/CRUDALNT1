@@ -8,8 +8,14 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+  box-shadow:
+    0 0 0 0.1rem white,
+    0 0 0 0.25rem #258cfb;
 }
 
 html {
@@ -21,12 +27,14 @@ body {
   margin-bottom: 60px;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+.form-floating > .form-control-plaintext::placeholder,
+.form-floating > .form-control::placeholder {
   color: var(--bs-secondary-color);
   text-align: end;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+.form-floating > .form-control-plaintext:focus::placeholder,
+.form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
 
@@ -49,7 +57,6 @@ header .nav-link:hover {
   color: var(--cor-destaque) !important;
 }
 
-
 body {
   background-color: #e6e6517a;
   color: #030303;
@@ -65,36 +72,37 @@ main {
 }
 
 footer {
-    border-top: 4px solid var(--cor-destaque);
+  border-top: 4px solid var(--cor-destaque);
 }
 
 footer span {
-    letter-spacing: 0.3px;
+  letter-spacing: 0.3px;
 }
 
 .table thead {
-    background-color: var(--cor-primaria) !important;
+  background-color: var(--cor-primaria) !important;
 }
 
 .table-hover tbody tr:hover {
-    background-color:--corprimaria;
+  background-color: --corprimaria;
 }
 
-.table td, .table th {
-    vertical-align: middle;
-    padding: 0.75rem;
+.table td,
+.table th {
+  vertical-align: middle;
+  padding: 0.75rem;
 }
 
 .form-control:focus {
-    border-color: var(--cor-primaria);
-    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
 }
 
 .form-label {
-    color: var(--cor-texto);
+  color: var(--cor-texto);
 }
 
 .card {
-    border: none;
-    border-radius: 0.75rem;
+  border: none;
+  border-radius: 0.75rem;
 }

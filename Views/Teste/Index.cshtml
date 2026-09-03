@@ -1,0 +1,62 @@
+@model IEnumerable<CRUDALNT1.Models.Aluno>
+
+@{
+    ViewData["Title"] = "Listar Alunos - Teste";
+}
+
+<h1>Listar Alunos</h1>
+
+<p>
+    <a asp-action="Create">Adicionar</a>
+</p>
+<table
+    class="table table-striped table-bordered table-hover table-sm"
+    >
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.idade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cursoid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nota)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.curso.descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nota)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
