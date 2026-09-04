@@ -5,28 +5,55 @@ using System.Threading.Tasks;
 using CRUDALNT1.Data;
 using CRUDALNT1.Models;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace CRUDALNT1.Controllers
 {
-    public class TesteController: Controller
+    public class TesteController : Controller
     {
-        private readonly AppDbContext contexto; 
+        private readonly AppDbContext contexto;
 
-         public TesteController(AppDbContext contexto)
+        public TesteController(AppDbContext context)
         {
-            this.contexto = contexto;
+            contexto = context;
         }
-    
+
         public IActionResult Mostrar()
         {
             return View();
-        }  
+        }
 
-        public IActionResult Index()
+        // GET: Alunos
+        public async Task<IActionResult> Index()
         {
-            var alunos = contexto.Alunos.; 
-            return View(alunos.ToList());
+            var appDbContext = contexto.Alunos.Include(a => a.curso);
+            return View(await appDbContext.ToListAsync());
+        }
+
+        // GET: Alunos/Create
+        [HttpGet]
+        public IActionResult Create()
+        {
+            ViewData["cursoid"] = new SelectList(contexto.Cursos, "id", "sigla");
+            return View();
+        }
+
+              // POST: Alunos/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("id,nome,idade,cursoid,nota")] Aluno aluno)
+        {
+            if (ModelState.IsValid)
+            {
+                contexto.Add(aluno);
+                await contexto.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["cursoid"] = new SelectList(contexto.Cursos, "id", "area", aluno.cursoid);
+            return View(aluno);
         }
 
     }
