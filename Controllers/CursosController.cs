@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CRUDALNT1.Data;
 using CRUDALNT1.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CRUDALNT1.Controllers
 {
@@ -44,6 +45,7 @@ namespace CRUDALNT1.Controllers
         }
 
         // GET: Cursos/Create
+        [Authorize] // Adiciona a anotação [Authorize] para proteger a ação Create
         public IActionResult Create()
         {
             return View();

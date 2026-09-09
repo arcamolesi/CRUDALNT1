@@ -56,5 +56,24 @@ namespace CRUDALNT1.Controllers
             return View(aluno);
         }
 
+
+       // GET: Alunos/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var aluno = await contexto.Alunos.Include(a => a.curso)
+            .FirstOrDefaultAsync(m => m.id == id);
+            if (aluno == null)
+            {
+                return NotFound();
+            }
+
+            return View(aluno);
+        }
+
     }
 }

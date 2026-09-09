@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CRUDALNT1.Data;
 using CRUDALNT1.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CRUDALNT1.Controllers
 {
+    [Authorize] // Adiciona a anotação [Authorize] para proteger o controlador
     public class AlunosController : Controller
     {
         private readonly AppDbContext _context;
